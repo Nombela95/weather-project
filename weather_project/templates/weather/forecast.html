@@ -1,0 +1,22 @@
+{% extends 'weather/base.html' %}
+
+{% block content %}
+<h1>Weather in {{ location }}</h1>
+<div class="card mt-4">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">
+                <img src="https://openweathermap.org/img/wn/{{ weather.weather_icon }}@2x.png" alt="Weather icon">
+            </div>
+            <div class="col-md-10">
+                <h2>{{ weather.temperature }}°C</h2>
+                <p>{{ weather.description|title }}</p>
+                <p>Humidity: {{ weather.humidity }}%</p>
+                <p>Wind: {{ weather.wind_speed }} m/s</p>
+                <p>Last updated: {{ weather.recorded_at }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="{% url 'forecast_history' location.id %}" class="btn btn-secondary mt-3">View History</a>
+{% endblock %}
